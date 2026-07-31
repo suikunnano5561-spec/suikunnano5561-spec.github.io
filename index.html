@@ -13,48 +13,48 @@
     overflow-x: hidden;
   }
 
-  /* ゴージャス＋見やすいパララックス背景 */
+  /* サントリー風：透明感のあるパララックス */
   .parallax {
     position: relative;
     height: 100vh;
-    background-image: url("gold-water-hero.jpg"); /* ←豪華な水背景に差し替え */
+    background-image: url("water-clear-hero.jpg"); /* ←透明感のある水の画像に差し替え */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
     text-align: center;
   }
 
-  /* 背景を見やすくする黒フィルター */
+  /* 見やすくする薄いフィルター */
   .parallax::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.45); /* ←見やすさUP */
+    background: rgba(0,0,0,0.25);
   }
 
-  /* ヒーロー文字アニメーション */
+  /* ヒーロー文字（サントリー風の静かな浮き上がり） */
   .hero-title, .hero-sub {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
     transition: 1.2s ease;
-    text-shadow: 0 0 12px rgba(0,0,0,0.4);
+    color: #ffffff;
     position: relative;
     z-index: 2;
+    text-shadow: 0 0 10px rgba(0,0,0,0.4);
   }
 
   .hero-title {
-    font-size: 48px;
-    letter-spacing: 0.2em;
+    font-size: 46px;
+    letter-spacing: 0.18em;
     font-weight: 700;
   }
 
   .hero-sub {
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 12px;
   }
 
   /* スクロールでふわっと浮く */
@@ -69,9 +69,9 @@
     transform: translateY(0);
   }
 
-  /* セクション */
+  /* セクション（サントリー風の広い余白） */
   section {
-    padding: 80px 10vw;
+    padding: 100px 12vw;
     text-align: center;
   }
 
@@ -79,15 +79,15 @@
     font-size: 28px;
     letter-spacing: 0.15em;
     margin-bottom: 20px;
-    color: #b8860b;
+    color: #0a4a7a;
     font-weight: 700;
   }
 
-  /* 垢販売画像がふわっと上に動く */
+  /* 写真は大きく透明感 */
   .acc-img {
     width: 100%;
     max-width: 900px;
-    border-radius: 20px;
+    border-radius: 18px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     opacity: 0;
     transform: translateY(40px);
@@ -99,10 +99,10 @@
     transform: translateY(0);
   }
 
-  /* ゴージャス＋見やすいCTA */
+  /* サントリー風：透明感のあるCTA */
   .cta {
     position: relative;
-    padding: 80px 10vw;
+    padding: 100px 12vw;
     text-align: center;
     color: #fff;
     overflow: hidden;
@@ -112,10 +112,10 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("gold-water-cta.jpg");
+    background-image: url("water-light-cta.jpg"); /* ←透明感のある水背景 */
     background-size: cover;
     background-position: center;
-    filter: brightness(0.55); /* ←見やすさUP */
+    filter: brightness(0.55);
   }
 
   .cta-inner {
@@ -124,7 +124,7 @@
   }
 
   .cta-title {
-    font-size: 32px;
+    font-size: 30px;
     letter-spacing: 0.15em;
     margin-bottom: 10px;
   }
@@ -139,7 +139,7 @@
     padding: 14px 36px;
     border-radius: 999px;
     background: rgba(255,255,255,0.9);
-    color: #b8860b;
+    color: #0a4a7a;
     font-weight: 700;
     text-decoration: none;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
@@ -187,13 +187,12 @@
   <img src="acc3.jpg" class="acc-img" id="img3">
 </section>
 
-<!-- ゴージャス＋見やすいCTA（公式LINE専用） -->
+<!-- CTA（公式LINE専用） -->
 <div class="cta">
   <div class="cta-inner">
     <div class="cta-title">お問い合わせ</div>
     <div class="cta-sub">販売・買取の相談は公式LINEからお願いします</div>
 
-    <!-- 公式LINEボタン -->
     <a href="https://line.me/R/ti/p/ここにあなたのLINEリンク"
        class="cta-btn">
       公式LINEはこちら
