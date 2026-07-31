@@ -13,11 +13,11 @@
     overflow-x: hidden;
   }
 
-  /* サントリー風：透明感のあるパララックス */
+  /* サントリー風：透明感のある水色パララックス */
   .parallax {
     position: relative;
     height: 100vh;
-    background-image: url("water-clear-hero.jpg"); /* ←透明感のある水の画像に差し替え */
+    background-image: url("water-suntory-hero.jpg"); /* ←透明感のある水画像に差し替え */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -27,12 +27,12 @@
     text-align: center;
   }
 
-  /* 見やすくする薄いフィルター */
+  /* 見やすくする薄いフィルター（青系） */
   .parallax::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.25);
+    background: rgba(0, 40, 80, 0.35); /* ←サントリーの青フィルター */
   }
 
   /* ヒーロー文字（サントリー風の静かな浮き上がり） */
@@ -79,11 +79,11 @@
     font-size: 28px;
     letter-spacing: 0.15em;
     margin-bottom: 20px;
-    color: #0a4a7a;
+    color: #0a4a7a; /* ←サントリーの深い青 */
     font-weight: 700;
   }
 
-  /* 写真は大きく透明感 */
+  /* 写真は透明感のある水色トーン */
   .acc-img {
     width: 100%;
     max-width: 900px;
@@ -99,7 +99,7 @@
     transform: translateY(0);
   }
 
-  /* サントリー風：透明感のあるCTA */
+  /* サントリー風：透明感のある水色CTA */
   .cta {
     position: relative;
     padding: 100px 12vw;
@@ -112,7 +112,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("water-light-cta.jpg"); /* ←透明感のある水背景 */
+    background-image: url("water-suntory-cta.jpg"); /* ←水の光が強い画像 */
     background-size: cover;
     background-position: center;
     filter: brightness(0.55);
@@ -139,7 +139,7 @@
     padding: 14px 36px;
     border-radius: 999px;
     background: rgba(255,255,255,0.9);
-    color: #0a4a7a;
+    color: #0a4a7a; /* ←深い青 */
     font-weight: 700;
     text-decoration: none;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
