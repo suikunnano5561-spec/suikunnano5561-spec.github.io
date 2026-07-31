@@ -13,7 +13,7 @@
     overflow-x: hidden;
   }
 
-  /* パララックス背景 */
+  /* パララックスヒーロー背景 */
   .parallax {
     position: relative;
     height: 100vh;
@@ -28,23 +28,25 @@
     text-align: center;
   }
 
-  .hero-title {
-    font-size: 48px;
-    letter-spacing: 0.2em;
+  /* ヒーロー文字アニメーション */
+  .hero-title, .hero-sub {
     opacity: 0;
     transform: translateY(40px);
     transition: 1.2s ease;
+    text-shadow: 0 0 12px rgba(0,0,0,0.4);
+  }
+
+  .hero-title {
+    font-size: 48px;
+    letter-spacing: 0.2em;
   }
 
   .hero-sub {
     font-size: 18px;
     margin-top: 10px;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 1.2s ease 0.2s;
   }
 
-  /* スクロールで浮き上がる */
+  /* スクロールでふわっと浮く */
   .fade-up {
     opacity: 0;
     transform: translateY(40px);
@@ -68,6 +70,7 @@
     margin-bottom: 20px;
   }
 
+  /* 水の画像がふわっと上に動く */
   .water-img {
     width: 100%;
     max-width: 900px;
@@ -81,6 +84,52 @@
   .water-img.show {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* ゴージャスな下部CTA */
+  .cta {
+    position: relative;
+    padding: 80px 10vw;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("water-gold.jpg"); /* ←豪華な水背景に差し替え */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-title {
+    font-size: 32px;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+
+  .cta-sub {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.9);
+    color: #0a4a7a;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
 
 </style>
@@ -124,6 +173,15 @@
   </p>
   <img src="water3.jpg" class="water-img" id="img3">
 </section>
+
+<!-- ゴージャスなCTA -->
+<div class="cta">
+  <div class="cta-inner">
+    <div class="cta-title">水と生きる未来へ</div>
+    <div class="cta-sub">Join Us for a Better Tomorrow</div>
+    <a href="mailto:info@example.com" class="cta-btn">CONTACT US</a>
+  </div>
+</div>
 
 <script>
   /* ヒーロー文字のフェードイン */
