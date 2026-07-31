@@ -13,7 +13,7 @@
     overflow-x: hidden;
   }
 
-  /* ゴージャスなパララックス背景 */
+  /* ゴージャス＋見やすいパララックス背景 */
   .parallax {
     position: relative;
     height: 100vh;
@@ -28,12 +28,22 @@
     text-align: center;
   }
 
+  /* 背景を見やすくする黒フィルター */
+  .parallax::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45); /* ←見やすさUP */
+  }
+
   /* ヒーロー文字アニメーション */
   .hero-title, .hero-sub {
     opacity: 0;
     transform: translateY(40px);
     transition: 1.2s ease;
     text-shadow: 0 0 12px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 2;
   }
 
   .hero-title {
@@ -89,7 +99,7 @@
     transform: translateY(0);
   }
 
-  /* ゴージャスなCTA */
+  /* ゴージャス＋見やすいCTA */
   .cta {
     position: relative;
     padding: 80px 10vw;
@@ -102,15 +112,15 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("gold-water-cta.jpg"); /* ←豪華な水背景に差し替え */
+    background-image: url("gold-water-cta.jpg");
     background-size: cover;
     background-position: center;
-    filter: brightness(0.7);
+    filter: brightness(0.55); /* ←見やすさUP */
   }
 
   .cta-inner {
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   .cta-title {
@@ -177,12 +187,17 @@
   <img src="acc3.jpg" class="acc-img" id="img3">
 </section>
 
-<!-- ゴージャスなCTA -->
+<!-- ゴージャス＋見やすいCTA（公式LINE専用） -->
 <div class="cta">
   <div class="cta-inner">
     <div class="cta-title">お問い合わせ</div>
-    <div class="cta-sub">販売・買取の相談はこちらから</div>
-    <a href="mailto:contact@example.com" class="cta-btn">メールで問い合わせる</a>
+    <div class="cta-sub">販売・買取の相談は公式LINEからお願いします</div>
+
+    <!-- 公式LINEボタン -->
+    <a href="https://line.me/R/ti/p/ここにあなたのLINEリンク"
+       class="cta-btn">
+      公式LINEはこちら
+    </a>
   </div>
 </div>
 
