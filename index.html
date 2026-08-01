@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>安全第一むじなグループ</title>
+<title>むじなグループ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -13,18 +13,17 @@
     overflow-x: hidden;
   }
 
-  /* 1枚目：フルスクリーン・水背景 */
+  /* 1枚目：自動切り替えトップ */
   .screen1 {
     position: relative;
     height: 100vh;
-    background-image: url("water-hero.jpg");
+    background-image: url("water-hero.jpg"); /* ←水の動画や画像に差し替え */
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow: hidden;
   }
   .screen1::before {
     content: "";
@@ -45,14 +44,13 @@
     transition: 1s ease;
   }
 
-  /* 2枚目：左右レイアウト＋ふわっと上がる */
+  /* 2枚目：左右レイアウト＋殿堂画像スライドショー */
   .screen2 {
     position: relative;
     height: 100vh;
     background-image: url("water-second.jpg");
     background-size: cover;
     background-position: center;
-    overflow: hidden;
   }
   .screen2::before {
     content: "";
@@ -70,24 +68,28 @@
     height: 100%;
     color: #fff;
   }
-  .screen2-left,
+  .screen2-left {
+    max-width: 40%;
+    font-size: 24px;
+    letter-spacing: 0.15em;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1.2s ease;
+  }
   .screen2-right {
     opacity: 0;
     transform: translateY(40px);
     transition: 1.2s ease;
   }
-  .screen2-left {
-    max-width: 40%;
-    font-size: 24px;
-    letter-spacing: 0.15em;
-  }
-  .screen2-right img {
-    max-width: 420px;
+  .slide-img {
+    width: 420px;
+    height: 260px;
+    object-fit: cover;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   }
 
-  /* 3枚目：スクロールで限定領域に文字 */
+  /* 3枚目：スクロール固定領域 */
   .screen3-wrapper {
     min-height: 120vh;
     background: linear-gradient(to bottom, #e9f6ff, #ffffff);
@@ -112,51 +114,50 @@
 <body>
 
 <!-- 1枚目 -->
-<div class="screen1" id="screen1">
+<div class="screen1">
   <div class="screen1-inner">
     <div class="hero-title" id="heroTitle">むじなグループ</div>
   </div>
 </div>
 
 <!-- 2枚目 -->
-<div class="screen2" id="screen2">
+<div class="screen2">
   <div class="screen2-inner">
     <div class="screen2-left" id="screen2Left">
       安全第一むじなグループ<br>
       <span style="font-size:14px; letter-spacing:0.08em;">
-        人と自然と響きあい、豊かな生活文化をめざします。
+        透明感のある世界観を大切にしています。
       </span>
     </div>
+
     <div class="screen2-right" id="screen2Right">
-      <!-- ここに殿堂系の画像スライドショーなどを入れられる -->
-      <img src="image1.jpg" alt="イメージ画像">
+      <img id="slideImage" class="slide-img" src="image1.jpg">
     </div>
   </div>
 </div>
 
-<!-- 3枚目：スクロールで限定領域に文章 -->
+<!-- 3枚目 -->
 <div class="screen3-wrapper">
   <div class="screen3-fixed" id="screen3Fixed">
     安全を第一に活動しています。<br><br>
     【無理のない範囲で、落ち着いて選びましょう】<br><br>
-    ここに理念やメッセージを載せて、  
-    スクロールしてもこの箱だけが見える構成にできます。
+    スクロールしてもこの箱だけが見える構成です。
   </div>
 </div>
 
 <script>
-  // 1枚目：表示＆1秒後に2枚目へスクロール
+  /* 1枚目：フェードイン＋自動スクロール */
   window.addEventListener("load", () => {
     const title = document.getElementById("heroTitle");
     title.style.opacity = 1;
     title.style.transform = "translateY(0)";
 
     setTimeout(() => {
-      document.getElementById("screen2").scrollIntoView({ behavior: "smooth" });
+      document.querySelector(".screen2").scrollIntoView({ behavior: "smooth" });
     }, 1000);
   });
 
-  // 2枚目：ふわっと上がる
+  /* 2枚目：ふわっと上がる */
   window.addEventListener("scroll", () => {
     const left = document.getElementById("screen2Left");
     const right = document.getElementById("screen2Right");
@@ -179,6 +180,21 @@
       fixed.style.transform = "translateY(0)";
     }
   });
+
+  /* 右側スライドショー（画像差し替え可能） */
+  const images = [
+    "image1.jpg",
+    "image2.jpg",
+    "image3.jpg",
+    "image4.jpg",
+    "image5.jpg"
+  ];
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    document.getElementById("slideImage").src = images[index];
+  }, 2000);
 </script>
 
 </body>
