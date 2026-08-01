@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>安全第一むじなグループ｜垢販売・買取</title>
+<title>安全第一むじなグループ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -13,220 +13,171 @@
     overflow-x: hidden;
   }
 
-  /* サントリー風：透明感のある水色パララックス */
-  .parallax {
+  /* 1枚目：フルスクリーン・水背景 */
+  .screen1 {
     position: relative;
     height: 100vh;
-    background-image: url("water-suntory-hero.jpg"); /* ←透明感のある水画像に差し替え */
+    background-image: url("water-hero.jpg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    overflow: hidden;
   }
-
-  /* 見やすくする薄いフィルター（青系） */
-  .parallax::before {
+  .screen1::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 40, 80, 0.35); /* ←サントリーの青フィルター */
+    background: rgba(0,0,0,0.35);
   }
-
-  /* ヒーロー文字（サントリー風の静かな浮き上がり） */
-  .hero-title, .hero-sub {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: 1.2s ease;
-    color: #ffffff;
+  .screen1-inner {
     position: relative;
-    z-index: 2;
-    text-shadow: 0 0 10px rgba(0,0,0,0.4);
+    z-index: 1;
+    color: #fff;
   }
-
   .hero-title {
     font-size: 46px;
     letter-spacing: 0.18em;
-    font-weight: 700;
-  }
-
-  .hero-sub {
-    font-size: 18px;
-    margin-top: 12px;
-  }
-
-  /* スクロールでふわっと浮く */
-  .fade-up {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
     transition: 1s ease;
   }
 
-  .fade-up.show {
-    opacity: 1;
-    transform: translateY(0);
+  /* 2枚目：左右レイアウト＋ふわっと上がる */
+  .screen2 {
+    position: relative;
+    height: 100vh;
+    background-image: url("water-second.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
   }
-
-  /* セクション（サントリー風の広い余白） */
-  section {
-    padding: 100px 12vw;
-    text-align: center;
+  .screen2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,40,80,0.35);
   }
-
-  .section-title {
-    font-size: 28px;
-    letter-spacing: 0.15em;
-    margin-bottom: 20px;
-    color: #0a4a7a; /* ←サントリーの深い青 */
-    font-weight: 700;
+  .screen2-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10vw;
+    height: 100%;
+    color: #fff;
   }
-
-  /* 写真は透明感のある水色トーン */
-  .acc-img {
-    width: 100%;
-    max-width: 900px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  .screen2-left,
+  .screen2-right {
     opacity: 0;
     transform: translateY(40px);
     transition: 1.2s ease;
   }
-
-  .acc-img.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* サントリー風：透明感のある水色CTA */
-  .cta {
-    position: relative;
-    padding: 100px 12vw;
-    text-align: center;
-    color: #fff;
-    overflow: hidden;
-  }
-
-  .cta::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("water-suntory-cta.jpg"); /* ←水の光が強い画像 */
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.55);
-  }
-
-  .cta-inner {
-    position: relative;
-    z-index: 2;
-  }
-
-  .cta-title {
-    font-size: 30px;
+  .screen2-left {
+    max-width: 40%;
+    font-size: 24px;
     letter-spacing: 0.15em;
-    margin-bottom: 10px;
+  }
+  .screen2-right img {
+    max-width: 420px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   }
 
-  .cta-sub {
-    font-size: 16px;
-    margin-bottom: 20px;
+  /* 3枚目：スクロールで限定領域に文字 */
+  .screen3-wrapper {
+    min-height: 120vh;
+    background: linear-gradient(to bottom, #e9f6ff, #ffffff);
+    padding: 80px 0;
   }
-
-  .cta-btn {
-    display: inline-block;
-    padding: 14px 36px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.9);
-    color: #0a4a7a; /* ←深い青 */
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  .screen3-fixed {
+    position: sticky;
+    top: 20vh;
+    margin: 0 auto;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 40px 30px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s ease;
   }
-
 </style>
 </head>
-
 <body>
 
-<!-- パララックスヒーロー -->
-<div class="parallax">
-  <div>
-    <div class="hero-title" id="heroTitle">安全第一むじなグループ</div>
-    <div class="hero-sub" id="heroSub">荒野行動アカウント販売・買取｜スクロールできます</div>
+<!-- 1枚目 -->
+<div class="screen1" id="screen1">
+  <div class="screen1-inner">
+    <div class="hero-title" id="heroTitle">むじなグループ</div>
   </div>
 </div>
 
-<!-- セクション1 -->
-<section>
-  <h2 class="section-title fade-up">安全な垢販売・買取</h2>
-  <p class="fade-up" style="max-width:700px; margin:0 auto; font-size:16px; line-height:1.8;">
-    むじなグループは安全第一で荒野行動アカウントの販売・買取を行っています。  
-    詐欺ゼロを継続し、安心して取引できる環境を提供しています。
-  </p>
-  <img src="acc1.jpg" class="acc-img" id="img1">
-</section>
+<!-- 2枚目 -->
+<div class="screen2" id="screen2">
+  <div class="screen2-inner">
+    <div class="screen2-left" id="screen2Left">
+      安全第一むじなグループ<br>
+      <span style="font-size:14px; letter-spacing:0.08em;">
+        人と自然と響きあい、豊かな生活文化をめざします。
+      </span>
+    </div>
+    <div class="screen2-right" id="screen2Right">
+      <!-- ここに殿堂系の画像スライドショーなどを入れられる -->
+      <img src="image1.jpg" alt="イメージ画像">
+    </div>
+  </div>
+</div>
 
-<!-- セクション2 -->
-<section>
-  <h2 class="section-title fade-up">高ランク垢の取り扱い</h2>
-  <p class="fade-up" style="max-width:700px; margin:0 auto; font-size:16px; line-height:1.8;">
-    高ランク・限定アイテム所持アカウントを多数取り扱い。  
-    すべて安全確認済みで、安心して購入できます。
-  </p>
-  <img src="acc2.jpg" class="acc-img" id="img2">
-</section>
-
-<!-- セクション3 -->
-<section>
-  <h2 class="section-title fade-up">むじなグループのこだわり</h2>
-  <p class="fade-up" style="max-width:700px; margin:0 auto; font-size:16px; line-height:1.8;">
-    取引の透明性・安全性を徹底し、ユーザーが安心して利用できるサービスを提供しています。
-  </p>
-  <img src="acc3.jpg" class="acc-img" id="img3">
-</section>
-
-<!-- CTA（公式LINE専用） -->
-<div class="cta">
-  <div class="cta-inner">
-    <div class="cta-title">お問い合わせ</div>
-    <div class="cta-sub">販売・買取の相談は公式LINEからお願いします</div>
-
-    <a href="https://line.me/R/ti/p/ここにあなたのLINEリンク"
-       class="cta-btn">
-      公式LINEはこちら
-    </a>
+<!-- 3枚目：スクロールで限定領域に文章 -->
+<div class="screen3-wrapper">
+  <div class="screen3-fixed" id="screen3Fixed">
+    安全を第一に活動しています。<br><br>
+    【無理のない範囲で、落ち着いて選びましょう】<br><br>
+    ここに理念やメッセージを載せて、  
+    スクロールしてもこの箱だけが見える構成にできます。
   </div>
 </div>
 
 <script>
-  /* ヒーロー文字のフェードイン */
+  // 1枚目：表示＆1秒後に2枚目へスクロール
   window.addEventListener("load", () => {
-    document.getElementById("heroTitle").style.opacity = 1;
-    document.getElementById("heroTitle").style.transform = "translateY(0)";
-    document.getElementById("heroSub").style.opacity = 1;
-    document.getElementById("heroSub").style.transform = "translateY(0)";
+    const title = document.getElementById("heroTitle");
+    title.style.opacity = 1;
+    title.style.transform = "translateY(0)";
+
+    setTimeout(() => {
+      document.getElementById("screen2").scrollIntoView({ behavior: "smooth" });
+    }, 1000);
   });
 
-  /* スクロールで要素が浮き上がる */
-  const fadeUps = document.querySelectorAll(".fade-up");
-  const imgs = document.querySelectorAll(".acc-img");
-
+  // 2枚目：ふわっと上がる
   window.addEventListener("scroll", () => {
-    fadeUps.forEach(el => {
-      const rect = el.getBoundingClientRect().top;
-      if (rect < window.innerHeight - 100) {
-        el.classList.add("show");
-      }
-    });
+    const left = document.getElementById("screen2Left");
+    const right = document.getElementById("screen2Right");
+    const fixed = document.getElementById("screen3Fixed");
 
-    imgs.forEach(img => {
-      const rect = img.getBoundingClientRect().top;
-      if (rect < window.innerHeight - 100) {
-        img.classList.add("show");
-      }
-    });
+    const lh = left.getBoundingClientRect().top;
+    const rh = right.getBoundingClientRect().top;
+    const fh = fixed.getBoundingClientRect().top;
+
+    if (lh < window.innerHeight - 100) {
+      left.style.opacity = 1;
+      left.style.transform = "translateY(0)";
+    }
+    if (rh < window.innerHeight - 100) {
+      right.style.opacity = 1;
+      right.style.transform = "translateY(0)";
+    }
+    if (fh < window.innerHeight - 150) {
+      fixed.style.opacity = 1;
+      fixed.style.transform = "translateY(0)";
+    }
   });
 </script>
 
